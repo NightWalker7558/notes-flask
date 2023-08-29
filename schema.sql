@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    email TEXT NOT NULL,
+    password_hash HASH NOT NULL,
+    authenticated BOOLEAN DEFAULT TRUE
+);
+
+DROP TABLE IF EXISTS notes;
+
+CREATE TABLE notes (
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    note_content TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);

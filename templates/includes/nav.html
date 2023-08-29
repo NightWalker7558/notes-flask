@@ -1,0 +1,19 @@
+<nav>
+    {% if "user" in session %}
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/notes">Notes</a></li>
+        <li><a href="/notes/create">Create</a></li>
+
+    </ul>
+    <div>
+        <a href="/logout">Logout</a>
+    </div>
+    
+    {% else %}
+    <div>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    </div>
+    {% endif %}
+</nav>

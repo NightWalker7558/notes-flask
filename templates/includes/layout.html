@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTES - {% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    {% include "includes/nav.html" %}
+    <main>
+        <div class="flash-message">
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if
+            messages %} {% for category, message in messages %}
+            <div id="myAlert" class="alert alert-{{category}} alert-dismissible fade show text-center">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                {{message}}
+            </div>
+            {% endfor %} {% endif %} {% endwith %}
+        </div>
+        {% block main %}{% endblock %}
+    </main>
+    {% include "includes/foot.html" %}
+</body>
+
+</html>
