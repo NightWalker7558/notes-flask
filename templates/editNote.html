@@ -1,0 +1,42 @@
+{% extends "includes/layout.html" %}
+
+{% block title %}
+    {{ note["title"] }}
+{% endblock %}
+
+{% block main %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h1 class="mb-4">Edit Note</h1>
+
+                <form action="/notes/{{ note["id"] }}/edit" method="post">
+                    <div class="form-group">
+                        <label for="noteTitle">Title</label>
+                        <input type="text" class="form-control" id="noteTitle" name="title" value="{{ note["title"] }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="noteContent">Content</label>
+                        <textarea class="form-control" id="noteContent" name="content" rows="6">{{ note["note_content"] }}</textarea>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="multiLabels">Labels</label>
+                        <select id="multiLabels" name="multiLabels" class="selectpicker form-control" multiple aria-label="Default select example" data-live-search="true">
+                            {% for label in labels %}
+                                {% if label["id"] in note_labels %}
+                                    <option value="{{ label["id"] }}" selected>{{ label["label_name"] }}</option>
+                                {% else %}
+                                    <option value="{{ label["id"] }}">{{ label["label_name"] }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="background-color: #435334; color: #fff;">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

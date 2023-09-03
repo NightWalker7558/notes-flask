@@ -5,6 +5,22 @@
 {% endblock %}
 
 {% block main %}
-    <h1>Home</h1>
-    <p>Welcome to my site.</p>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-6 mx-auto my-auto">
+                <h1 class="display-4">Welcome to My Notes World</h1>
+                <p class="lead">Your Creative Space for Capturing Ideas</p>
+                <p>Unleash your creativity and stay organized with our note-taking platform. Whether you're a student, professional, or a creative thinker, we've got you covered.</p>
+                <a class="btn btn-primary btn-lg" href="/notes" style="background-color: #435334; border-color: #435334;">Get Started</a>
+            </div>
+            <div class="col-md-6">
+                <img src="../static/images/notes.png" alt="Notebook Image" class="img-fluid rounded-circle">
+            </div>
+        </div>
+    </div>
 {% endblock %}
+
+{% block foot %}
+    {% include "./includes/foot.html" %}
+{% endblock %}
+

@@ -19,3 +19,23 @@ CREATE TABLE notes (
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+DROP TABLE IF EXISTS labels;
+
+CREATE TABLE labels (
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    label_name TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+DROP TABLE IF EXISTS notes_labels;
+
+CREATE TABLE notes_labels (
+    note_id INTEGER NOT NULL,
+    label_id INTEGER NOT NULL,
+    FOREIGN KEY (note_id) REFERENCES notes(id),
+    FOREIGN KEY (label_id) REFERENCES labels(id)
+);
